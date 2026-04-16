@@ -1,20 +1,8 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "ai-server/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": "ai-server/**"
-      }
-    },
-    {
-      "src": "ai-web/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "ai-web/dist"
-      }
-    }
+    { "src": "ai-server/server.js", "use": "@vercel/node" },
+    { "src": "ai-web/package.json", "use": "@vercel/static-build", "config": { "distDir": "ai-web/dist" } }
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/ai-server/server.js" },
