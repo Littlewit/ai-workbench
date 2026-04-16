@@ -1,0 +1,12 @@
+{
+  "name": "ai-workbench",
+  "version": "1.0.0",
+  "scripts": {
+    "install:all": "cd ai-web && npm install && cd ../ai-server && npm install",
+    "build": "cd ai-web && npm run build",
+    "dev": "concurrently \"cd ai-server && npm run dev\" \"cd ai-web && npm run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
