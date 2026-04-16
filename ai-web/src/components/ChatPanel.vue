@@ -111,6 +111,8 @@ const send = async () => {
           }
         }
       }
+      // 保存当前聊天记录到 localStorage
+      localStorage.setItem('chat-panel-history', JSON.stringify(list.value));
     } catch (e) {
       console.error('解析完整响应失败:', e);
       ai.content = '解析响应数据失败';
