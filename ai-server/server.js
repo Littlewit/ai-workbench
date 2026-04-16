@@ -12,10 +12,12 @@ app.use(express.text({ limit: '10mb' }));
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
   next();
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+// ========== Render 必须加：托管前端 dist 静态文件 ==========
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // RAG 全局文档 
 let globalDoc = '';
@@ -64,6 +66,8 @@ app.post('/api/ai', async (req, res) => {
   }
 });
 
-app.listen(3001, () => {
-  console.log('✅ AI工作台服务已启动：http://localhost:3001');
+// ========== Render 强制要求：使用环境变量端口 ==========
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log('✅ AI工作台服务已启动：端口 ' + PORT);
 });
