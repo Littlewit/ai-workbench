@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { ref, nextTick, watch } from 'vue';
+import { ref, nextTick, watch, onBeforeUnmount } from 'vue';
 const list = ref([]);
 const input = ref('');
 const loading = ref(false);
