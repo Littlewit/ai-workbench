@@ -11,6 +11,8 @@
     <div class="panel">
       <!-- 智能聊天 -->
       <ChatPanel v-if="tab === 'chat'" />
+      <!-- 智能聊天（Python）-->
+      <ChatPanelPy v-if="tab === 'chatPy'" />
 
       <!-- 文档问答（RAG） -->
       <RagPanel v-if="tab === 'rag'" />
@@ -27,6 +29,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import ChatPanel from '../components/ChatPanel.vue';
+import ChatPanelPy from '../components/ChatPanelPy.vue';
 import RagPanel from '../components/RagPanel.vue';
 import CopyPanel from '../components/CopyPanel.vue';
 import CodePanel from '../components/CodePanel.vue';
@@ -34,10 +37,14 @@ import CodePanel from '../components/CodePanel.vue';
 const tab = ref('chat');
 const tabs = [
   { key: 'chat', label: '💬 智能聊天' },
+  // { key: 'chatPy', label: '💬 智能聊天（Python）' },
   { key: 'rag', label: '📄 文档问答' },
   { key: 'copy', label: '✍️ 文案生成' },
   { key: 'code', label: '💻 代码助手' },
 ];
+if (import.meta.env.VITE_APP_ENV === 'development') {
+  tabs.unshift({ key: 'chatPy', label: '💬 智能聊天（Python）' });
+}
 </script>
 
 <style scoped>

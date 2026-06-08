@@ -45,7 +45,7 @@ app.post('/api/ai', async (req, res) => {
     const resp = await axios.post(
       'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation',
       {
-        model: 'qwen-turbo',
+        model: 'qwen3.6-plus',
         input: { messages },
         parameters: {
           result_format: 'stream',
